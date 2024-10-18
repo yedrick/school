@@ -1,0 +1,35 @@
+@extends('layout.master')
+
+@push('plugin-styles')
+  <link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet" />
+@endpush
+
+@section('content')
+    <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+        <div>
+            <h4 class="mb-3 mb-md-0">Create new {{ strtolower($className) }}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 grid-margin">
+          <div class="card">
+            <div class="card-body">
+              <form class="forms-sample" method="POST" action="{{ url('{{ plural_class }}/store') }}">
+                @csrf
+                {{-- Aquí puedes agregar más campos si es necesario --}}
+                <div class="d-flex justify-content-center ">
+                    <a href="{{ url('{{ plural_class }}') }}" type="button" class="btn btn-danger btn-icon-text me-2">
+                        <i class="btn-icon-prepend" data-feather="arrow-left"></i>
+                        Prev
+                    </a>
+                    <button type="submit" class="btn btn-primary btn-icon-text ">
+                        <i class="btn-icon-prepend" data-feather="save"></i>
+                        Save
+                    </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+@endsection

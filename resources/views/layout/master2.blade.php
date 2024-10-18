@@ -24,10 +24,10 @@ License: For each use you must have a valid license purchased only from above li
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <!-- End fonts -->
-  
+
   <!-- CSRF Token -->
   <meta name="_token" content="{{ csrf_token() }}">
-  
+
   <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
 
   <!-- plugin css -->
@@ -40,6 +40,10 @@ License: For each use you must have a valid license purchased only from above li
   <!-- common css -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
   <!-- end common css -->
+
+  {{-- sweelAlert --}}
+  <link href="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" />
+  {{-- end sweelAlert --}}
 
   @stack('style')
 </head>
@@ -65,6 +69,11 @@ License: For each use you must have a valid license purchased only from above li
     <!-- common js -->
     <script src="{{ asset('assets/js/template.js') }}"></script>
     <!-- end common js -->
+
+    {{-- sweeldAlert --}}
+    <script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('assets/js/sweet-alert.js') }}"></script>
+    {{-- end sweelalert --}}
 
     @stack('custom-scripts')
 </body>

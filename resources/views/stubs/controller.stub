@@ -1,0 +1,96 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\{{ class }}\Store{{ class }}Request;
+use App\Http\Requests\{{ class }}\Update{{ class }}Request;
+use App\Models\{{ class }};
+use App\Services\{{ class }}\{{ class }}Service;
+use Illuminate\Support\Facades\Log;
+
+class {{ class }}Controller extends Controller {
+
+    protected ${{ variable }};
+
+    public function __construct({{ class }}Service ${{ variable }}Service) {
+        $this->{{ variable }} = ${{ variable }}Service;
+    }
+
+    public function index() {
+        try {
+            return view('{{ plural_class }}.index', ['{{ plural_class }}' => $this->{{ variable }}->get(), 'headers' => $this->{{ variable }}->getTableHeaders()]);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            // return redirect()->route('categories.index')->with('message_danger', 'Error en el servidor');
+        }
+    }
+
+    public function create() {
+        try {
+            return view('{{ plural_class }}.create');
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            // return redirect()->route('categories.index')->with('message_danger', 'Error en el servidor');
+        }
+    }
+
+    public function store(Store{{ class }}Request $request) {
+        try {
+            $this->{{ variable }}->store($request->all());
+            return redirect()->route('{{ plural_class }}.index')->with('message_success', 'Operación realizada con éxito');
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            // return redirect()->route('categories.index')->with('message_danger', 'Error en el servidor');
+        }
+    }
+
+    public function show({{ class }} ${{ variable }}) {
+        try {
+            return view('{{ plural_class }}.show', ['{{ variable }}' => $this->{{ variable }}->getById(${{ variable }}->id)]);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            // return redirect()->route('categories.index')->with('message_danger', 'Error en el servidor');
+        }
+    }
+
+    public function edit({{ class }} ${{ variable }}) {
+        try {
+            return view('{{ plural_class }}.edit', ['{{ variable }}' => $this->{{ variable }}->getById(${{ variable }}->id)]);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            // return redirect()->route('categories.index')->with('message_danger', 'Error en el servidor');
+        }
+    }
+
+    public function update(Update{{ class }}Request $request, {{ class }} ${{ variable }}) {
+        try {
+            $this->{{ variable }}->update($request->all(), ${{ variable }}->id);
+            return redirect()->route('{{ plural_class }}.index')->with('message_success', 'Operación realizada con éxito');
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            // return redirect()->route('categories.index')->with('message_danger', 'Error en el servidor');
+        }
+    }
+
+    public function destroy({{ class }} ${{ variable }}) {
+        try {
+            $this->{{ variable }}->delete(${{ variable }}->id);
+            return redirect()->route('{{ plural_class }}.index')->with('message_success', 'Operación realizada con éxito');
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            // return redirect()->route('categories.index')->with('message_danger', 'Error en el servidor');
+        }
+    }
+
+    public function generateExcel() {
+        try {
+            return $this->{{ variable }}->generateExcel(['id', 'name', 'price', 'description']);
+        } catch (\ArgumentCountError $e) {
+            Log::error($e->getMessage());
+            // return redirect()->route('categories.index')->with('message_danger', 'Error en el servidor');
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            // return redirect()->route('categories.index')->with('message_danger', 'Error en el servidor');
+        }
+    }
+}

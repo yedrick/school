@@ -13,7 +13,7 @@
     <ul class="nav">
         <li class="nav-item nav-category">Crud</li>
         <li class="nav-item {{ active_class(['/']) }}">
-          <a href="{{ url('/') }}" class="nav-link">
+          <a href="{{ url('/products') }}" class="nav-link">
             <i class="link-icon" data-feather="plus"></i>
             <span class="link-title">Productos</span>
           </a>

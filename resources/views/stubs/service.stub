@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Services\{{ class }};
+
+use App\Models\{{ class }};
+use App\Services\CrudService;
+
+class {{ class }}Service extends CrudService {
+
+    public function __construct() {
+        parent::__construct({{ class }}::class, null);
+    }
+
+    public function getTableHeaders(): array {
+        return [
+            // Definir los headers de la tabla aquí
+        ];
+    }
+
+    // Puedes descomentar y personalizar este método si lo necesitas
+    // public function get() {
+    //     $items = {{ class }}::query();
+    //     if (request()->has('date')) {
+    //         $items->whereDate('created_at', '<=', request('date'));
+    //     }
+    //     return $items->get();
+    // }
+}

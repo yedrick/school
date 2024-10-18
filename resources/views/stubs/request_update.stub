@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Http\Requests\{{ class }};
+
+use App\Http\Requests\BaseFormRequest;
+
+class Update{{ class }}Request extends BaseFormRequest {
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array {
+        return [
+            // Aquí se definen las reglas de validación
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array {
+        return [
+            // Aquí puedes definir los mensajes de error personalizados
+        ];
+    }
+}

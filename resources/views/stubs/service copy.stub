@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Services\{{ class }};
+
+use App\Http\Resources\{{ class }}\{{ class }}Resource;
+use App\Services\CrudService;
+use App\Models\{{ class }};
+
+class {{ class }}Service extends CrudService {
+    public function __construct() {
+        parent::__construct({{ class }}::class, {{ class }}Resource::class);
+    }
+}

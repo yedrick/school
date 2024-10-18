@@ -1,0 +1,57 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\{{ class }};
+use App\Http\Requests\{{ class }}\Store{{ class }}Request;
+use App\Http\Requests\{{ class }}\Update{{ class }}Request;
+use App\Http\Resources\Response\ApiResponse;
+use App\Services\{{ class }}\{{ class }}Service;
+
+class {{ class }}Controller extends Controller {
+    protected ${{ variable }};
+
+    public function __construct({{ class }}Service ${{ variable }}Service) {
+        $this->{{ variable }} = ${{ variable }}Service;
+    }
+
+    public function index() {
+        try {
+            return ApiResponse::success($this->{{ variable }}->get());
+        } catch (\Throwable $e) {
+            return ApiResponse::error('Error al obtener los {{ plural_class }}: ' . $e->getMessage(), 500);
+        }
+    }
+
+    public function store(Store{{ class }}Request $request) {
+        try {
+            return ApiResponse::success($this->{{ variable }}->store($request->all()));
+        } catch (\Throwable $e) {
+            return ApiResponse::error('Error al crear el {{ singular_class }}: ' . $e->getMessage(), 500);
+        }
+    }
+
+    public function show({{ class }} ${{ variable }}) {
+        try {
+            return ApiResponse::success($this->{{ variable }}->getById(${{ variable }}->id));
+        } catch (\Throwable $e) {
+            return ApiResponse::error('Error al obtener el {{ singular_class }}: ' . $e->getMessage(), 500);
+        }
+    }
+
+    public function update(Update{{ class }}Request $request, {{ class }} ${{ variable }}) {
+        try {
+            return ApiResponse::success($this->{{ variable }}->update($request->all(), ${{ variable }}->id));
+        } catch (\Throwable $e) {
+            return ApiResponse::error('Error al actualizar el {{ singular_class }}: ' . $e->getMessage(), 500);
+        }
+    }
+
+    public function destroy({{ class }} ${{ variable }}) {
+        try {
+            return ApiResponse::success($this->{{ variable }}->delete(${{ variable }}->id), '{{ singular_class }} eliminado correctamente');
+        } catch (\Throwable $e) {
+            return ApiResponse::error('Error al eliminar el {{ singular_class }}: ' . $e->getMessage(), 500);
+        }
+    }
+}
