@@ -10,13 +10,13 @@
             <h4 class="mb-3 mb-md-0">Create new product</h4>
         </div>
     </div>
-    <div class="row">
+        <div class="row">
         <div class="col-md-12 grid-margin">
           <div class="card">
             <div class="card-body">
               <form class="forms-sample" method="POST" action="{{url('products/store')}}">
                 @csrf
-                {{-- <div class="row mb-3">
+                 <div class="row mb-3">
                   <div class="col">
                     <label class="form-label">Name:</label>
                     <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" @error('name') aria-describedby="validationServer01Feedback" @enderror placeholder="Name" name="name" id="name">
@@ -40,7 +40,7 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                   </div>
-                </div> --}}
+                </div>
                 <div class="d-flex justify-content-center ">
                     <a href="{{ url('products') }}" type="button" class="btn btn-danger btn-icon-text me-2">
                         <i class="btn-icon-prepend" data-feather="arrow-left"></i>
