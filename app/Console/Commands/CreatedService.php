@@ -13,7 +13,7 @@ class CreatedService extends Command
      *
      * @var string
      */
-    protected $signature = 'service:create {name}';
+    protected $signature = 'yer:create {name}';
 
     /**
      * The console command description.
