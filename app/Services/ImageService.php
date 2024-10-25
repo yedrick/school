@@ -38,8 +38,6 @@ class ImageService {
         return $filename;
     }
 
-
-
     // funcion para obtener la imagen
     public function getUrlImage($name, $folder = 'seed') {
         if($name == null) return null;

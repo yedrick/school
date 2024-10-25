@@ -111,5 +111,6 @@
         $('#dateForm').submit();
       }
     });
-  </script>
+    
+    </script>
 @endpush

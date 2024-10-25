@@ -43,7 +43,7 @@ class ProductController extends Controller{
 
     public function show(Product $product) {
         try {
-            return view('products.show', ['product' => $this->product->getById($product->id)]);
+            return view('products.show', ['product' => $product]);
         } catch (\Exception $e) {
             return redirect()->route('products.index')->with('message_danger', 'Error en el servidor');
         }
@@ -51,7 +51,7 @@ class ProductController extends Controller{
 
     public function edit(Product $product) {
         try{
-            return view('products.edit', ['product' => $this->product->getById($product->id)]);
+            return view('products.edit', ['product' => $product]);
         } catch (\Exception $e) {
             return redirect()->route('products.index')->with('message_danger', 'Error en el servidor');
         }
@@ -60,7 +60,7 @@ class ProductController extends Controller{
     public function update(UpdateProductRequest $request, Product $product) {
         try {
             $this->product->update($request->all(), $product->id);
-            return redirect()->route('products.index')->with('message_success', 'Operación realizada con éxito');
+            return redirect()->route('products.index')->with('message_success', 'Actualizado con éxito');
         } catch (\Exception $e) {
             return redirect()->route('products.index')->with('message_danger', 'Error en el servidor');
         }
@@ -77,7 +77,7 @@ class ProductController extends Controller{
 
     public function generateExcel() {
         try {
-            return $this->product->generateExcel(['id', 'name', 'price','description']);
+            return $this->product->generateExcel([ 'Nombre', 'PRECIO','description'],[ 'name', 'price','description']);
         } catch (\ArgumentCountError $e) {
             return redirect()->route('products.index')->with('message_danger', 'Error en el servidor');
         }catch (\Exception $e) {
