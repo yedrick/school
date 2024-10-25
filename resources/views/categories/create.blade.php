@@ -7,7 +7,7 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
         <div>
-            <h4 class="mb-3 mb-md-0">Create new {{ strtolower($className) }}</h4>
+            <h4 class="mb-3 mb-md-0">Create new </h4>
         </div>
     </div>
     <div class="row">
@@ -18,6 +18,7 @@
                 @csrf
                 {{-- Aquí puedes agregar más campos si es necesario --}}
                 <div class="d-flex justify-content-center ">
+                    
                     <a href="{{ url('categories') }}" type="button" class="btn btn-danger btn-icon-text me-2">
                         <i class="btn-icon-prepend" data-feather="arrow-left"></i>
                         Prev

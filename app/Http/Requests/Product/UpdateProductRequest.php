@@ -42,4 +42,9 @@ class UpdateProductRequest extends BaseFormRequest {
         ];
     }
 
+    // prepareForValidation
+    // public function prepareForValidation() {
+    //     // elimianaos el name del request
+    // }
+
 }

@@ -12,8 +12,8 @@ class ProductService extends CrudService {
 
     public function getTableHeaders():array {
         return [
-            'id' => 'ID',
-            'name' => 'Nombre',
+            'id' => '#',
+            'name' => 'Nombres',
             'price' => 'Precio',
             'description' => 'Descripción',
             'created_at' => 'Creado',
@@ -22,11 +22,11 @@ class ProductService extends CrudService {
         ];
     }
 
-    // public function get() {
-    //     $products = Product::query();
-    //     if (request()->has('date')) {
-    //         $products->whereDate('created_at','<=', request('date'));
-    //     }
-    //     return $products->get();
-    // }
+    public function get() {
+        $products = Product::query();
+        if (request()->has('date')) {
+            $products->whereDate('created_at','<=', request('date'));
+        }
+        return $products->get();
+    }
 }
